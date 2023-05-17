@@ -904,9 +904,9 @@ module Spaceship
     # Automatically retries the request up to 3 times if something goes wrong
     def send_request(method, url_or_path, params, headers, &block)
       with_retry do
-        url_or_path = URI.parse(URI.escape(url_or_path))
-        response = @client.send(method, url_or_path, params, headers, &block)
-        log_response(method, url_or_path, response, headers, &block)
+        uri = URI.parse(URI.encode(url_or_path.to_s))
+        response = @client.send(method, uri, params, headers, &block)
+        log_response(method, uri, response, headers, &block)
 
         handle_error(response)
 
@@ -938,7 +938,8 @@ module Spaceship
     end
 
     def send_request_auto_paginate(method, url_or_path, params, headers, &block)
-      response = send_request(method, url_or_path, params, headers, &block)
+      uri = URI.parse(URI.encode(url_or_path.to_s))
+      response = send_request(method, uri, params, headers, &block)
       return response unless should_process_next_rel?(response)
       last_response = response
       while last_response.env.rels[:next]
