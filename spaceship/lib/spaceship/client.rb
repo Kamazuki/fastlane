@@ -904,6 +904,7 @@ module Spaceship
     # Automatically retries the request up to 3 times if something goes wrong
     def send_request(method, url_or_path, params, headers, &block)
       with_retry do
+        url_or_path = URI.parse(URI.escape(url_or_path))
         response = @client.send(method, url_or_path, params, headers, &block)
         log_response(method, url_or_path, response, headers, &block)
 
