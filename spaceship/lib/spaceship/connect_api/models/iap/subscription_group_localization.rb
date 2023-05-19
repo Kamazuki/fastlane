@@ -18,7 +18,7 @@ module Spaceship
 
       attr_mapping({
         customAppName: 'custom_app_name',
-        local: 'local',
+        locale: 'locale',
         name: 'name',
         state: 'state'
       })

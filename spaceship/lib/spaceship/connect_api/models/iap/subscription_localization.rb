@@ -19,7 +19,7 @@ module Spaceship
 
       attr_mapping({
         description: 'description',
-        local: 'local',
+        locale: 'locale',
         name: 'name',
         state: 'state'
       })
