@@ -685,7 +685,7 @@ module Spaceship
           iap_request_client.post('subscriptionLocalizations', params)
         end
 
-        def update_subscription_localization(localization_id:, description:, name:)
+        def update_subscription_localization(localization_id:, name:, description:)
           params = {
             data: {
               id: localization_id

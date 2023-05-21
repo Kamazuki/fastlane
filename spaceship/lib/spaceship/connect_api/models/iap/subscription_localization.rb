@@ -37,11 +37,10 @@ module Spaceship
         client.delete_subscription_localization(localization_id: id)
       end
 
-      def update(client: nil)
+      def update(client: nil, name: nil, description: nil)
         client ||= Spaceship::ConnectAPI
-        client.update_subscription_localization(localization_id: id)
+        client.update_subscription_localization(localization_id: id, name: name, description: description)
       end
-      
     end
   end
 end
