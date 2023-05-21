@@ -688,7 +688,7 @@ module Spaceship
         def update_subscription_localization(localization_id:, name:, description:)
           params = {
             data: {
-              id: localization_id
+              id: localization_id,
               type: 'subscriptionLocalizations',
               attributes: {
                 name: name,
