@@ -364,6 +364,24 @@ module Spaceship
           iap_request_client.post("subscriptionSubmissions", params)
         end
 
+        def submit_subscription_group(family_id:)
+          params = {
+            data: {
+              type: 'subscriptionGroupSubmissions', # Hard coded value
+              relationships: {
+                subscriptionGroup: {
+                  data: {
+                    id: family_id,
+                    type: 'subscriptionGroups'
+                  }
+                }
+              }
+            }
+          }
+
+          iap_request_client.post("subscriptionGroupSubmissions", params)
+        end
+
         def delete_subscription(purchase_id:)
           iap_request_client.delete("subscriptions/#{purchase_id}")
         end

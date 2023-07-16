@@ -33,6 +33,16 @@ module Spaceship
       end
 
       #
+      # Submit
+      #
+
+      def submit(client: nil)
+        client ||= Spaceship::ConnectAPI
+        resp = client.submit_subscription_group(family_id: id)
+        resp.to_models.first
+      end
+
+      #
       # Subscription Group Localizations
       #
 
