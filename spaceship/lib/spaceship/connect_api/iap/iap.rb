@@ -721,6 +721,10 @@ module Spaceship
           iap_request_client.delete("subscriptionLocalizations/#{localization_id}")
         end
 
+        def delete_subscription_group_localization(localization_id:)
+          iap_request_client.delete("subscriptionGroupLocalizations/#{localization_id}")
+        end
+
         #
         # subscriptionAppStoreReviewScreenshots
         #

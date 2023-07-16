@@ -32,6 +32,11 @@ module Spaceship
         resps = client.update_subscription_group_localization(custom_app_name: custom_app_name, name: name, localization_id: id)
         return resps.to_models.first
       end
+
+      def delete(client: nil)
+        client ||= Spaceship::ConnectAPI
+        client.delete_subscription_group_localization(localization_id: id)
+      end
     end
   end
 end
